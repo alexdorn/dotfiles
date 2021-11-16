@@ -1,0 +1,68 @@
+" Settings
+
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'morhetz/gruvbox'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'easymotion/vim-easymotion'
+Plug 'kien/ctrlp.vim'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'tpope/vim-commentary'
+Plug 'hashivim/vim-terraform'
+" Language server for HCL (Hashicorp)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"Plug 'davidhalter/jedi-vim' 
+" { 'on': 'Python' }
+call plug#end()
+set number
+syntax on
+
+" colorscheme
+colorscheme gruvbox
+set background=dark
+
+" Tabs and indents
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set smarttab
+set smartindent
+
+" Enable mouse scrolling
+set mouse=a
+"Searching
+set ignorecase " case insensitive searching
+set smartcase " case-sensitive if expresson contains a capital letter
+set hlsearch
+set incsearch " set incremental search, like modern browsers
+set showmatch " show matching braces
+
+set nocompatible " not compatible with vi
+
+" make backspace behave in a sane manner
+set backspace=indent,eol,start
+
+" Misc
+set noerrorbells                " No beeps
+set novisualbell
+set noswapfile                  " Don't use swapfile
+set nobackup                    " Don't create annoying backup files
+set splitright                  " Split vertical windows right to the current
+"windows
+set splitbelow                  " Split horizontal windows below to the
+""current windows
+set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats"
+
+
+"mappings
+let g:mapleader=','
+map <C-n> :NERDTreeToggle<CR>
+map <Leader> <Plug>(easymotion-prefix)
+map <F4> :TerraformFmt<CR>
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
